@@ -1,18 +1,26 @@
 {
-  "name": "food-lookup",
-  "version": "0.1.0",
+  "name": "lookup-server",
+  "version": "0.0.1",
   "private": true,
-  "dependencies": {
-    "react": "^15.4.2",
-    "react-dom": "^15.4.2"
+  "babel": {
+    "presets": [
+      "es2015",
+      "stage-0"
+    ]
   },
-  "devDependencies": {
-    "react-scripts": "0.9.5"
+  "dependencies": {
+    "babel-cli": "6.22.2",
+    "babel-core": "6.22.1",
+    "babel-preset-es2015": "6.22.0",
+    "babel-preset-stage-0": "6.22.0",
+    "express": "4.13.3",
+    "fs": "0.0.2",
+    "sql.js": "0.3.2"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "server": "babel-node start-server.js"
+  },
+  "devDependencies": {
+    "concurrently": "3.1.0"
   }
 }
