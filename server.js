@@ -23,6 +23,9 @@ const COLUMNS = [
 app.get('/api/food', (req, res) => {
   const param = req.query.q;
 
+
+  //http://localhost:3001/api/food?q=hash+browns
+
   if (!param) {
     res.json({
       error: 'Missing required parameter `q`',
@@ -63,6 +66,5 @@ app.get('/api/food', (req, res) => {
   }
 });
 
-app.listen(app.get('port'), () => {
-	console.log(`http://localhost:${app.get('port')}/`);
-});
+
+export default app;

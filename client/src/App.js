@@ -1,18 +1,35 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import FoodSearch from  './FoodSearch';
+import SelectedFoods from './SelectedFoods';
+
 import './App.css';
 
 class App extends Component {
+  state = {
+    selectedFoods: [],
+  };
+
   render() {
     return (
       <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
+        <div className="ui text container">
+          <SelectedFoods
+            foods={this.state.selectedFoods} 
+            onFoodClick={
+              (idx) => (
+                this.setState({
+                  selectedFoods: [
+                    ...this.state.selectedFoods.slice(0, idx),
+                    ...this.state.selectedFoods.slice(idx + 1,
+                      this.state.selectedFoods.length)
+                  ],
+                })
+              )
+            }
+
+          />
+          <FoodSearch />
         </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
       </div>
     );
   }
