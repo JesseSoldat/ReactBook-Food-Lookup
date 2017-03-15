@@ -83,7 +83,9 @@ class FoodSearch extends React.Component {
 				<tbody>
 				{
 					this.state.foods.map((food, idx) => (
-					<tr key={idx}>
+					<tr key={idx}
+							onClick={() => this.props.onFoodClick(food)}
+					>
 						<td>{food.description}</td>
 						<td className='right aligned'>{food.kcal}</td>
 						<td className='right aligned'>{food.protein}</td>

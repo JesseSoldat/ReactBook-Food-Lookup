@@ -28,7 +28,11 @@ class App extends Component {
             }
 
           />
-          <FoodSearch />
+          <FoodSearch onFoodClick={(food) => (this.setState({
+              selectedFoods: this.state.selectedFoods.concat(food)
+              })
+            )
+          }/>
         </div>
       </div>
     );

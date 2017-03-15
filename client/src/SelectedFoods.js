@@ -17,6 +17,41 @@ export default function SelectedFoods(props) {
 				<th>Carbs (g)</th>
 			</tr>
 		</thead>
+		<tbody>
+		{props.foods.map((food, idx) => (
+			<tr key={idx} onClick={() => props.onFoodClick(idx)}>
+				<td>{food.description}</td>
+				<td className='right aligned'>{food.kcal ? food.kcal : 0}</td>
+				<td className='right aligned'>{food.protein_g ? food.protein_g : 0}</td>
+				<td className='right aligned'>{food.fat_g ? food.fat_g : 0}</td>
+				<td className='right aligned'>{food.carbohydrate ? food.carbohydrate_g : 0}</td>
+			</tr>
+			)
+		)}
+		</tbody>
+		<tfoot>
+			<tr>
+				<th>Total</th>
+				<th className="right aligned" id='total-kcal'>
+					{sum(props.foods, 'kcal')}
+				</th>
+				<th className='right aligned' id='total-protein_g'>
+					{sum(props.foods, 'protein_g')}
+				</th>
+				<th className='right aligned' id='total-fat_g'>
+            {sum(props.foods, 'fat_g')}
+        </th>
+        <th className='right aligned' id='total-carbohydrate_g'>
+            {sum(props.foods, 'carbohydrate_g')}
+        </th>
+			</tr>
+		</tfoot>
 	</table>
 	);
+}
+
+function sum(foods, prop) {
+	return foods.reduce((memo, food) => (
+		parseInt(food[prop], 10) + memo
+	), 0.0).toFixed(2);
 }
