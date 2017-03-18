@@ -9,7 +9,7 @@ class FoodSearch extends React.Component {
 		foods: [],
 		showRemoveIcon: false,
 		searchValue: '',
-	};
+	}; 
 
 	handleSearchChange = (e) => {
 		const value = e.target.value;
