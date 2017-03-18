@@ -3,7 +3,7 @@ import FoodSearch from  './FoodSearch';
 import SelectedFoods from './SelectedFoods';
 
 import './App.css';
-
+ 
 class App extends Component {
   state = {
     selectedFoods: [],

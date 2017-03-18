@@ -8,6 +8,8 @@
     "react-dom": "^15.4.2"
   },
   "devDependencies": {
+    "enzyme": "2.4.1",
+    "react-addons-test-utils": "15.4.1",
     "react-scripts": "0.9.5"
   },
   "proxy": "http://localhost:3001/",
