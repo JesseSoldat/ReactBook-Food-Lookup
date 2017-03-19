@@ -4,7 +4,7 @@ function search(query, cb) {
 		accept: 'application/json',}
 		).then(checkStatus)
 		 .then(parseJSON)
-		 .then(cb);
+		 .then(cb); 
 }
 
 function checkStatus(response) {
