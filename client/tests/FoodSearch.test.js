@@ -134,6 +134,71 @@ describe('FoodSearch', () => {
 						onFoodClick.mock.calls[0]
 					).toEqual([food]);
 				});
+
+				describe('then user types more', () => {
+					const value = 'broccx';
+
+					beforeEach(() => {
+						const input = wrapper.find('input').first();
+						input.simulate('change', {
+							target: {value: value}
+						});
+					});
+
+					describe('and the api returns no results',() => {
+						beforeEach(() => {
+							const secondInvocationArgs = Client.search.mock.calls[1];
+							const cb = secondInvocationArgs[1];
+							cb([]);
+							wrapper.update();
+						});
+
+						it('should set the state property foods', () => {
+							expect(
+								wrapper.state().foods
+							).toEqual([]);
+						});
+					});//and the api returns no results
+				});// then user types more
+				describe('the user clears field with backspace', () => {
+					beforeEach(() => {
+						const input = wrapper.find('input').first();
+						input.simulate('change', {
+							target: { value: ''}
+						});
+					});
+
+					it('should set the state property foods', () => {
+						expect(
+							wrapper.state().foods
+						).toEqual([]);
+					});
+
+					it('should set the state property showRemoveIcon', () => {
+						expect(
+							wrapper.state().showRemoveIcon
+						).toBe(false);
+					});
+				});//the user clears field with backspace
+
+				describe('the user clicks the remove icon', () => {
+					beforeEach(() => {
+						const icon = wrapper.find('.remove.icon').first();
+						icon.simulate('click');
+					});
+
+					it('should set the state property foods', () => {
+						expect(
+							wrapper.state().foods
+						).toEqual([]);
+					});
+
+					it('should set the state property showRemoveIcon', () => {
+						expect(
+							wrapper.state().showRemoveIcon
+						).toBe(false);
+					});
+				});//the user clicks the remove icon
 			});//	then user clicks food item	
 		});//	and API returns results	
 	});//user populates search field
